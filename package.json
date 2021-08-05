@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/XavierSaunier/marvel-back/issues"
   },
-  "homepage": "https://github.com/XavierSaunier/marvel-back#readme"
+  "homepage": "https://github.com/XavierSaunier/marvel-back#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
 }
