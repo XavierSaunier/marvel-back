@@ -4,13 +4,14 @@ const axios = require("axios");
 
 router.get("/comics", async (req, res) => {
   try {
-    let page = (req.query.page - 1) * 100;
+    let limit = req.query.limit;
+    let page = (req.query.page - 1) * limit;
     let title = req.query.title;
     if (title === undefined) {
       title = "";
     }
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.MARVEL_API_KEY}&skip=${page}&title=${title}`
+      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.MARVEL_API_KEY}&skip=${page}&title=${title}&limit=${limit}`
     );
 
     console.log(response.data);

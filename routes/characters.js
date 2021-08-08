@@ -6,14 +6,16 @@ const Character = require("../models/Character");
 
 router.get("/characters", async (req, res) => {
   try {
-    let page = (req.query.page - 1) * 100;
+    let limit = req.query.limit;
+
+    let page = (req.query.page - 1) * limit;
     let name = req.query.name;
-    console.log(name);
+
     if (name === undefined) {
       name = "";
     }
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_API_KEY}&skip=${page}&name=${name}`
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_API_KEY}&skip=${page}&name=${name}&limit=${limit}`
     );
     console.log(response.data);
     res.json(response.data);
