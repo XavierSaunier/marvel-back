@@ -7,6 +7,15 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(cors());
 
+/*mongoose.connect(
+  `https://lereacteur-marvel-api.herokuapp.com?apiKey=${process.env.MARVEL_API_KEY}`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  }
+);*/
+
 app.get("/", (req, res) => {
   res.json({ message: "Here comes marvel API" });
 });

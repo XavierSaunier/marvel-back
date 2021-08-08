@@ -27,11 +27,15 @@ router.get("/characters/:id", async (req, res) => {
     let characterId = req.params.id;
     console.log(characterId);
 
-    const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters/?apiKey=${process.env.MARVEL_API_KEY}`
+    const character = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_API_KEY}&characterId=${characterId}`
     );
+    //let item = character.find(character.result._id === req.params.id);
     //let character = await response.getElementById(characterId);
-    console.log(response.data);
+
+    console.log(character.result);
+    //console.log(item);
+    res.json(character);
     res.json(characterId);
   } catch (error) {
     res.status(400).json({ message: error.message });
